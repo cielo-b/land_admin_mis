@@ -22,7 +22,7 @@ export class User {
   phone: string;
 
   @Column()
-  passwordHash: string;
+  password: string;
 
   @Column({
     type: 'enum',
@@ -32,7 +32,7 @@ export class User {
   })
   roles: UserRole[];
 
-  @OneToMany(() => LandParcel, (landParcel) => landParcel.registeredOwner)
+  @OneToMany(() => LandParcel, (parcel) => parcel.registeredOwner)
   ownedLand: LandParcel[];
 
   @OneToMany(() => ConstructionPermit, (permit) => permit.applicant)

@@ -38,4 +38,16 @@ export class LandTransfer {
 
   @Column('jsonb')
   documents: any;
+
+  @Column({ nullable: true })
+  approvedBy: number;
+
+  @Column({ nullable: true })
+  approvedAt: Date;
+
+  @Column({ nullable: true })
+  updatedBy: number;
+
+  @Column({ nullable: true })
+  updatedAt: Date;
 }

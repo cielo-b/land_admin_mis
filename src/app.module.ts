@@ -6,6 +6,9 @@ import { LandModule } from './land/land.module';
 import { PermitsModule } from './permits/permits.module';
 import { DisputesModule } from './disputes/disputes.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { SettingsModule } from './settings/settings.module';
+import { LandTaxesModule } from './land-taxes/land-taxes.module';
+import { UsersModule } from './users/users.module';
 import { SharedModule } from './shared/shared.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -47,6 +50,9 @@ import { DataSource } from 'typeorm';
     PermitsModule,
     DisputesModule,
     NotificationsModule,
+    SettingsModule,
+    LandTaxesModule,
+    UsersModule,
     SharedModule,
   ],
   controllers: [AppController],

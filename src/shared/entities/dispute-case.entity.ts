@@ -41,4 +41,16 @@ export class DisputeCase {
 
   @Column('jsonb')
   supportingDocuments: any;
+
+  @Column({ nullable: true })
+  resolvedBy: number;
+
+  @Column({ nullable: true })
+  resolvedAt: Date;
+
+  @Column({ nullable: true })
+  updatedBy: number;
+
+  @Column({ nullable: true })
+  updatedAt: Date;
 }

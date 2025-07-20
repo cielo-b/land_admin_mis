@@ -11,6 +11,10 @@ import { LandHistory } from './entities/land-history.entity';
 import { ConstructionPermit } from './entities/construction-permit.entity';
 import { DisputeCase } from './entities/dispute-case.entity';
 import { LandTransfer } from './entities/land-transfer.entity';
+import { AuditLog } from './entities/audit-log.entity';
+import { AuditLogService } from './audit-log.service';
+import { RedisService } from './redis.service';
+import { RabbitService } from './rabbit.service';
 
 @Module({
   imports: [
@@ -22,6 +26,7 @@ import { LandTransfer } from './entities/land-transfer.entity';
       ConstructionPermit,
       DisputeCase,
       LandTransfer,
+      AuditLog,
     ]),
     CacheModule.registerAsync({
       isGlobal: true,
@@ -46,6 +51,14 @@ import { LandTransfer } from './entities/land-transfer.entity';
       inject: [ConfigService],
     }),
   ],
-  exports: [TypeOrmModule, CacheModule, BullModule],
+  providers: [RedisService, RabbitService, AuditLogService],
+  exports: [
+    TypeOrmModule,
+    CacheModule,
+    BullModule,
+    RedisService,
+    RabbitService,
+    AuditLogService,
+  ],
 })
 export class SharedModule {}
