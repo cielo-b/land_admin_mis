@@ -1,4 +1,4 @@
-import { IsNumber, IsNotEmpty } from 'class-validator';
+import { IsNumber, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class TransferLandDto {
   @IsNumber()
@@ -13,6 +13,6 @@ export class TransferLandDto {
   @IsNotEmpty()
   toOwnerId: number;
 
-  @IsNotEmpty()
+  @IsOptional()
   documents: any;
 }

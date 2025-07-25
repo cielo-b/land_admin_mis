@@ -14,7 +14,7 @@ export class AuditLog {
   @Column()
   action: string; // e.g., 'APPROVED', 'UPDATED'
 
-  @Column()
+  @Column({ nullable: true })
   performedBy: number; // User ID
 
   @Column()

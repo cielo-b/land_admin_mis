@@ -19,13 +19,13 @@ import { Roles } from '../auth/roles.decorator';
 export class LandController {
   constructor(private readonly landService: LandService) {}
 
-  @Roles('CITIZEN', 'ADMIN')
+  @Roles('citizen', 'ADMIN')
   @Post('register')
   registerLand(@Body() createLandDto: CreateLandDto, @Request() req) {
     return this.landService.registerLand(createLandDto, req.user.id);
   }
 
-  @Roles('CITIZEN', 'ADMIN')
+  @Roles('citizen', 'ADMIN')
   @Post('transfer')
   transferLand(@Body() transferLandDto: TransferLandDto, @Request() req) {
     return this.landService.transferLand(transferLandDto, req.user.id);

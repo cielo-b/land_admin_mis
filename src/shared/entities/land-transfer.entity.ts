@@ -36,7 +36,7 @@ export class LandTransfer {
   @Column({ nullable: true })
   rejectionReason: string;
 
-  @Column('jsonb')
+  @Column('jsonb', { nullable: true })
   documents: any;
 
   @Column({ nullable: true })

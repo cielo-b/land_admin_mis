@@ -18,11 +18,8 @@ export class LandParcel {
   @Column({ unique: true })
   parcelNumber: string;
 
-  @Column('geometry')
+  @Column({ type: 'geometry', spatialFeatureType: 'Polygon', srid: 4326 })
   location: any;
-
-  @Column('float')
-  area: number;
 
   @Column()
   address: string;
@@ -38,6 +35,12 @@ export class LandParcel {
 
   @Column()
   village: string;
+
+  @Column('float', { nullable: true })
+  area: number;
+
+  @Column('float', { nullable: true })
+  perimeter: number;
 
   @ManyToOne(() => User, (user) => user.ownedLand)
   registeredOwner: User;

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/require-await */
-import { Module } from '@nestjs/common';
+import { Controller, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CacheModule } from '@nestjs/cache-manager';
@@ -15,6 +15,7 @@ import { AuditLog } from './entities/audit-log.entity';
 import { AuditLogService } from './audit-log.service';
 import { RedisService } from './redis.service';
 import { RabbitService } from './rabbit.service';
+import { RabbitListenerService } from './rabbit-listener.service';
 
 @Module({
   imports: [
@@ -51,7 +52,7 @@ import { RabbitService } from './rabbit.service';
       inject: [ConfigService],
     }),
   ],
-  providers: [RedisService, RabbitService, AuditLogService],
+  providers: [RedisService, RabbitService, AuditLogService, RabbitListenerService],
   exports: [
     TypeOrmModule,
     CacheModule,
