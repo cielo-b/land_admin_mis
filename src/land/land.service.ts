@@ -77,7 +77,6 @@ export class LandService {
     // Generate parcel number
     const parcelNumber = await this.generateUPI(createLandDto);
 
-    // Create and save land (area and perimeter can be calculated here if needed)
     const land = this.landRepository.create({
       ...createLandDto,
       parcelNumber,
@@ -193,12 +192,11 @@ export class LandService {
   generateUPI = async (dto: CreateLandDto): Promise<string> => {
     let upi: string = 'UPI-';
     // city
-    // simulate upi generation per location
+    // simulate upi generation per location 
     let isUnique = false;
     let attempts = 0;
     do {
       const rawUpi = Math.floor(10000000 + Math.random() * 90000000).toString();
-      // Add slash after every 2 digits: e.g. 12345678 -> 12/34/56/78
       upi = rawUpi.match(/.{1,2}/g)?.join('/') ?? rawUpi;
       // Check uniqueness in the database
       const existing = await this.landRepository.findOne({
